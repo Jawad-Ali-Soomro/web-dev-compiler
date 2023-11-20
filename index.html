@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <title>Code Editor</title>
+  </head>
+  <body>
+    <div class="left">
+      <div id="html-sect">
+        <i class="uil uil-user">HTML</i>
+        <textarea
+          name=""
+          id="html"
+          cols="30"
+          rows="10"
+          onkeyup="Run()"
+        ></textarea>
+      </div>
+      <div id="css-sect">
+        <i class="uil uil-css-3">CSS</i>
+        <textarea
+          name=""
+          id="css"
+          cols="30"
+          rows="10"
+          onkeyup="Run()"
+        ></textarea>
+      </div>
+      <div id="js-sect">
+        <i class="uil uil-js">JAVASCRIPT</i>
+        <textarea
+          name=""
+          id="js"
+          cols="30"
+          rows="10"
+          onkeyup="Run()"
+        ></textarea>
+      </div>
+    </div>
+    <div class="right">
+      <p>RESULT</p>
+      <iframe id="result" ></iframe>
+    </div>
+  </body>
+</html>
+
+<script>
+  function Run() {
+    let html = document.getElementById("html").value;
+    let css = document.getElementById("css").value;
+    let js = document.getElementById("js").value;
+    let result = document.getElementById("result");
+    result.contentDocument.body.innerHTML = html + `<style>` + css + `</style>` + `<script ${js} /> `;
+    result.contentWindow.eval(js)
+  }
+</script>
